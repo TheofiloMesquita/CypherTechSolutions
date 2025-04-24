@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CypherTech - Entrar</title>
+    <link rel="shortcut icon" type="imagex/png" href="../imgs/icone.png">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style_entrar.css">
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header class="header">
+        <a href="../index.html" aria-label="Voltar para página inicial">
+            <img src="../imgs/logo.jpg" alt="Logo CypherTech" class="logo">
+        </a>
+        <nav class="menu" aria-label="Menu principal">
+            <a href="../index.html">Tela Inicial</a>
+            <a href="../sobre_nos/index_sobre_nos.html">Sobre Nós</a>
+        </nav>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="campo_login">
+        <form class="formulario" id="formLogin" novalidate>
+            <div class="dados">
+                <label for="email">Email:</label>
+                <input type="email" id="email" class="usuario" required>
+            </div>
+            
+            <div class="dados">
+                <label for="senha">Senha:</label>
+                <input type="password" id="senha" class="usuario" minlength="6" required>
+                <button type="button" onclick="mostrar_senha()" class="icon-button" aria-label="Mostrar senha">
+                    <img src="../imgs/show.png" alt="exibir" class="icon" id="icon-senha">
+                </button>
+            </div>
+            
+            <div id="erro" role="alert" class="mensagem-erro"></div>
+            
+            <button type="submit" class="botao">Entrar</button>
+            
+            <div class="link-cadastro">
+                Não Possui Cadastro? 
+                <a href="../cadastro/index_cadastro.html" class="link">Cadastrar</a>
+            </div>
+        </form>
+    </main>
+
+    <!-- BARRA INFERIOR -->
+    <footer class="footer" aria-label="Rodapé">
+        <p>© CypherTech Solutions <span id="current-year"></span></p>
+    </footer>
+
+    <script>
+        // Atualiza o ano atual no footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+
+    <script src="main_entrar.js" defer></script>
+</body>
+</html>

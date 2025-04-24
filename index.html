@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>CypherTech Solutions</title>
+    <link rel="shortcut icon" type="imagex/png" href="imgs/icone.png">
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js"></script>
+</head>
+<body>
+    <!-- barra superior -->
+    <div class="header">
+        <a href="index.html">
+            <img src="imgs/logo.jpg" alt="Logo" class="logo">
+        </a>
+        <div class="menu">
+            <a href="sobre_nos/index_sobre_nos.html">Sobre Nós</a>
+            <a href="entrar/index_entrar.html">Entrar</a>
+            <a href="cadastro/index_cadastro.html">Cadastrar</a>
+        </div>
+    </div>
+
+    <!-- conteudo central -->
+    <div class="carrossel-container">
+        <div class="carrossel">
+            <div class="slide" style="background-image: url(imgs/slide.jpg);">Transformando ideias em inovação</div>
+            <div class="slide" style="background-image: url(imgs/slide1.jpg);">Conectando realidades</div>
+            <div class="slide" style="background-image: url(imgs/slide2.jpg);">Visando sempre segurança</div>
+            <div class="slide" style="background-image: url(imgs/slide3.jpg);">Melhorando a cada dia</div>
+        </div>
+    
+        <div class="indicadores">
+            <div class="indicador ativo" data-indice="0"></div>
+            <div class="indicador" data-indice="1"></div>
+            <div class="indicador" data-indice="2"></div>
+            <div class="indicador" data-indice="3"></div>
+        </div>
+    </div>
+
+    <!-- BARRA INFERIOR -->
+    <footer class="footer" aria-label="Rodapé">
+        <p>© CypherTech Solutions <span id="current-year"></span></p>
+    </footer>
+
+    <script>
+        // Atualiza o ano atual no footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
