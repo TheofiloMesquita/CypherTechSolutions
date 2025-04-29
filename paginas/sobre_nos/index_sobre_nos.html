@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CypherTech - Sobre Nós</title>
+  <link rel="shortcut icon" href="../../imgs/icones/icone.png" type="image/x-icon">
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="style_sobre_nos.css">
+</head>
+<body>
+  <header class="header">
+    <a href="../../index.html"><img src="../../imgs/icones/logo.jpg" alt="Logo" class="logo"></a>
+    <nav class="menu" id="offline">
+      <a href="../../index.html">Início</a>
+      <a href="../entrar/index_entrar.html">Entrar</a>
+      <a href="../cadastro/index_cadastro.html">Cadastrar</a>
+    </nav>
+    <nav class="menu" id="online">
+      <a href="../../index.html">Início</a>
+      <div class="perfil_hover">
+        <img src="../../imgs/icones/icone pessoa.png" alt="Perfil">
+        <div class="menu_hover">
+          <a href="../perfil/index_perfil.html">Perfil</a>
+          <a href="../senha/index_alterar_senha.html">Alterar Senha</a>
+          <button onclick="logout()">Sair</button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="sobre-nos">
+    <article class="container">
+      <section class="card">
+        <img src="../../imgs/sobre_nos.jpg" alt="Equipe trabalhando" class="card-image">
+        <div class="card-content">
+          <h2>Nossa Missão</h2>
+          <p>Transformamos desafios tecnológicos em soluções inovadoras e eficientes com nossa equipe qualificada.</p>
+        </div>
+      </section>
+      
+      <section class="card">
+        <img src="../../imgs/sobre_nos1.jpg" alt="Reunião de equipe" class="card-image">
+        <div class="card-content">
+          <h2>Nosso Compromisso</h2>
+          <p>Oferecemos soluções completas com foco em inovação, segurança e alta performance.</p>
+        </div>
+      </section>
+      
+      <section class="card">
+        <img src="../../imgs/sobre_nos2.jpg" alt="Tecnologias" class="card-image">
+        <div class="card-content">
+          <h2>Por que nos escolher?</h2>
+          <ul class="benefits-list">
+            <li class="benefit-item">✅ Inovação Tecnológica</li>
+            <li class="benefit-item">✅ Segurança Digital</li>
+            <li class="benefit-item">✅ Suporte Especializado</li>
+            <li class="benefit-item">✅ Parceria Estratégica</li>
+          </ul>
+        </div>
+      </section>
+      <div class="slogan" aria-label="Slogan da empresa">
+        CypherTech Solutions - Conectando o Futuro ao Presente!
+    </div>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <p>© CypherTech Solutions <span id="year"></span></p>
+  </footer>
+
+  <script src="main_sobre_nos.js" defer onerror="console.error('Erro ao carregar o script principal')"></script>
+  </body>
+</html>

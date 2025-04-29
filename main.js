@@ -1,55 +1,80 @@
-// Espera o carregamento completo do DOM antes de executar o script
-document.addEventListener('DOMContentLoaded', function() {
-    // Seleciona o elemento do carrossel
-    let carrossel = document.querySelector('.carrossel');
-    // Seleciona todos os slides individuais
-    let slides = document.querySelectorAll('.slide');
-    // Seleciona todos os indicadores (bolinhas de navegação)
-    let indicadores = document.querySelectorAll('.indicador');
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Configuração do Carrossel (mantido igual)
+    const carrossel = document.querySelector('.carrossel');
+    const slides = document.querySelectorAll('.slide');
+    const indicadores = document.querySelectorAll('.indicador');
     
-    // criando variavel pra contar o slide atual
-    let slideAtual = 0;
+    if (carrossel && slides.length && indicadores.length) {
+        let slideAtual = 0;
+        let intervalo = null;
+        const tempoTransicao = 5000;
 
-    // armazena todos os slides
-    let totalSlides = slides.length;
+        const atualizarCarrossel = () => {
+            carrossel.style.transform = `translateX(-${slideAtual * 100}%)`;
+            indicadores.forEach((ind, i) => {
+                const isAtivo = i === slideAtual;
+                ind.classList.toggle('ativo', isAtivo);
+                ind.setAttribute('aria-selected', isAtivo);
+                slides[i].setAttribute('aria-hidden', !isAtivo);
+            });
+        };
+
+        const reiniciarIntervalo = () => {
+            clearInterval(intervalo);
+            intervalo = setInterval(() => {
+                slideAtual = (slideAtual + 1) % slides.length;
+                atualizarCarrossel();
+            }, tempoTransicao);
+        };
+
+        indicadores.forEach(ind => {
+            ind.addEventListener('click', () => {
+                slideAtual = parseInt(ind.dataset.indice);
+                atualizarCarrossel();
+                reiniciarIntervalo();
+            });
+        });
+
+        reiniciarIntervalo();
+    }
+
+    // 2. Menu de Perfil (somente hover)
+    const perfilHover = document.querySelector('.perfil_hover');
+    const menuHover = document.querySelector('.menu_hover');
     
-    // Função que atualiza a posição do carrossel e o estado dos indicadores
-    function atualizarCarrossel() {
-        // Move o carrossel horizontalmente com transform (translação em X)
-        // O cálculo -${slideAtual * 100}% move o carrossel para mostrar o slide atual
-        carrossel.style.transform = `translateX(-${slideAtual * 100}%)`;
-        
-        // Atualiza a aparência dos indicadores
-        indicadores.forEach((ind, index) => {
-            // Adiciona a classe 'ativo' ao indicador do slide atual
-            // Remove dos demais (toggle com segundo parâmetro)
-            ind.classList.toggle('ativo', index === slideAtual);
+    if (perfilHover && menuHover) {
+        perfilHover.addEventListener('mouseenter', () => {
+            menuHover.style.display = 'flex';
+            perfilHover.setAttribute('aria-expanded', 'true');
+        });
+
+        perfilHover.addEventListener('mouseleave', () => {
+            menuHover.style.display = 'none';
+            perfilHover.setAttribute('aria-expanded', 'false');
         });
     }
+
+    // 3. Controle de Login/Logout (simplificado)
+    const menuOffline = document.getElementById("offline");
+    const menuOnline = document.getElementById("online");
     
-    // Função para saltar diretamente para um slide específico
-    function irParaSlide(index) {
-        // Atualiza o slide atual para o índice recebido
-        slideAtual = index;
-        // Chama a função para atualizar a exibição
-        atualizarCarrossel();
+    if (menuOffline && menuOnline) {
+        const isLoggedIn = localStorage.getItem("User");
+        menuOffline.style.display = isLoggedIn ? "none" : "flex";
+        menuOnline.style.display = isLoggedIn ? "flex" : "none";
     }
-    
-    // Adiciona eventos de clique a cada indicador
-    indicadores.forEach(indicador => {
-        indicador.addEventListener('click', function() {
-            // Obtém o índice do slide a partir do atributo data-indice
-            let indice = parseInt(this.getAttribute('data-indice'));
-            // Chama a função para ir para o slide correspondente
-            irParaSlide(indice);
-        });
-    });
-    
-    // Configura o auto-play contínuo (sem pausa)
-    setInterval(() => {
-        // Avança para o próximo slide (se for o último, volta ao primeiro)
-        slideAtual = (slideAtual < totalSlides - 1) ? slideAtual + 1 : 0;
-        // Atualiza a exibição
-        atualizarCarrossel();
-    }, 5000); // Executa a cada 5000 milissegundos (3 segundos)
+
+    // 4. Atualização do ano no footer
+    const yearElement = document.getElementById('current-year');
+    if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
+    }
+
+    // 5. Logout global
+    window.logout = () => {
+        if (confirm('Tem certeza que deseja sair?')) {
+            localStorage.removeItem("User");
+            window.location.href = "index.html";
+        }
+    };
 });

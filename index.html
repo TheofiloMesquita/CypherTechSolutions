@@ -2,22 +2,34 @@
 <html lang="pt-br">
 <head>
     <title>CypherTech Solutions</title>
-    <link rel="shortcut icon" type="imagex/png" href="imgs/icone.png">
+    <link rel="shortcut icon" type="imagex/png" href="imgs/icones/icone.png">
     <link rel="stylesheet" href="style.css">
     <script src="main.js"></script>
 </head>
 <body>
-    <!-- barra superior -->
-    <div class="header">
-        <a href="index.html">
-            <img src="imgs/logo.jpg" alt="Logo" class="logo">
+    <header class="header">
+        <a href="index.html" aria-label="Página inicial">
+            <img src="imgs/icones/logo.jpg" alt="Logo CypherTech" class="logo">
         </a>
-        <div class="menu">
-            <a href="sobre_nos/index_sobre_nos.html">Sobre Nós</a>
-            <a href="entrar/index_entrar.html">Entrar</a>
-            <a href="cadastro/index_cadastro.html">Cadastrar</a>
-        </div>
-    </div>
+        
+        <nav class="menu" id="offline" aria-label="Menu principal (deslogado)">
+            <a href="paginas/sobre_nos/index_sobre_nos.html">Sobre Nós</a>
+            <a href="paginas/entrar/index_entrar.html">Entrar</a>
+            <a href="paginas/cadastro/index_cadastro.html">Cadastrar</a>
+        </nav>
+        
+        <nav class="menu" id="online" aria-label="Menu principal (logado)">
+            <a href="paginas/sobre_nos/index_sobre_nos.html">Sobre Nós</a>
+            <div class="perfil_hover" tabindex="0" aria-haspopup="true" aria-expanded="false">
+                <img src="imgs/icones/icone pessoa.png" alt="Perfil do usuário">
+                <div class="menu_hover" role="menu">
+                    <a href="paginas/perfil/index_perfil.html" role="menuitem">Perfil</a>
+                    <a href="paginas/senha/index_alterar_senha.html" role="menuitem">Alterar Senha</a>
+                    <button onclick="logout()" role="menuitem">Sair</button>
+                </div>
+            </div>
+        </nav>
+    </header>
 
     <!-- conteudo central -->
     <div class="carrossel-container">
@@ -41,9 +53,6 @@
         <p>© CypherTech Solutions <span id="current-year"></span></p>
     </footer>
 
-    <script>
-        // Atualiza o ano atual no footer
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-    </script>
+    <script src="main.js" defer></script>
 </body>
 </html>
