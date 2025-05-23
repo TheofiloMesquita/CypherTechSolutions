@@ -54,7 +54,7 @@ function limparErros() {
 function mostrarErro(message, field = null) {
   DOM.erro.textContent = message;
   if (field) {
-      document.getElementById(field).style.borderColor = 'red';
+    document.getElementById(field).style.borderColor = 'red';
   }
 }
 
@@ -74,10 +74,10 @@ function setLoadingState(isLoading) {
 */
 function storeUserData(userData) {
   try {
-      localStorage.setItem('User', JSON.stringify(userData));
-      console.log('Dados do usuário armazenados com sucesso');
+    localStorage.setItem('User', JSON.stringify(userData));
+    console.log('Dados do usuário armazenados com sucesso');
   } catch (error) {
-      console.error('Erro ao armazenar dados:', error);
+    console.error('Erro ao armazenar dados:', error);
   }
 }
 
@@ -87,26 +87,27 @@ function storeUserData(userData) {
 * @param {string} senha 
 * @returns {Promise<object>} - Resposta da API
 */
+response = null
 async function loginAPI(email, senha) {
   try {
-      const response = await fetch('https://go-wash-api.onrender.com/api/login', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-              email,
-              password: senha,
-              user_type_id: 1
-          })
-      });
+    const response = await fetch('https://go-wash-api.onrender.com/api/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email,
+        password: senha,
+        user_type_id: 1
+      })
+    });
 
-      if (!response.ok) {
-          throw new Error(ERROR_MESSAGES.credenciaisInvalidas);
-      }
+    if (!response.ok) {
+      throw new Error(ERROR_MESSAGES.credenciaisInvalidas);
+    }
 
-      return await response.json();
+    return await response.json();
   } catch (error) {
-      console.error('Erro na requisição:', error);
-      throw error;
+    console.error('Erro na requisição:', error);
+    throw error;
   }
 }
 
@@ -123,28 +124,28 @@ async function handleLogin(event) {
 
   // Validação básica
   if (!email || !senha) {
-      mostrarErro(ERROR_MESSAGES.camposObrigatorios);
-      if (!email) DOM.email.style.borderColor = 'red';
-      if (!senha) DOM.senha.style.borderColor = 'red';
-      return;
+    mostrarErro(ERROR_MESSAGES.camposObrigatorios);
+    if (!email) DOM.email.style.borderColor = 'red';
+    if (!senha) DOM.senha.style.borderColor = 'red';
+    return;
   }
 
   if (!validarEmail(email)) {
-      mostrarErro(ERROR_MESSAGES.emailInvalido, 'email');
-      return;
+    mostrarErro(ERROR_MESSAGES.emailInvalido, 'email');
+    return;
   }
 
   setLoadingState(true);
 
   try {
-      const userData = await loginAPI(email, senha);
-      storeUserData(userData);
-      alert('Login realizado com sucesso!');
-      window.location.href = '../../index.html';
+    const userData = await loginAPI(email, senha);
+    storeUserData(userData);
+    alert('Login realizado com sucesso!');
+    window.location.href = '../endereco/index_endereco.html';
   } catch (error) {
-      mostrarErro(error.message || ERROR_MESSAGES.erroConexao);
+    mostrarErro(error.message || ERROR_MESSAGES.erroConexao);
   } finally {
-      setLoadingState(false);
+    setLoadingState(false);
   }
 }
 
@@ -152,13 +153,13 @@ async function handleLogin(event) {
 document.addEventListener('DOMContentLoaded', () => {
   // Configurar evento de submit
   if (DOM.form) {
-      DOM.form.addEventListener('submit', handleLogin);
+    DOM.form.addEventListener('submit', handleLogin);
   }
 
   // Configurar função global para mostrar senha
   window.mostrar_senha = () => {
-      if (DOM.senha && DOM.iconSenha) {
-          togglePasswordVisibility(DOM.senha, DOM.iconSenha);
-      }
+    if (DOM.senha && DOM.iconSenha) {
+      togglePasswordVisibility(DOM.senha, DOM.iconSenha);
+    }
   };
 });

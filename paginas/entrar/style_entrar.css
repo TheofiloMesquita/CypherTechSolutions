@@ -103,18 +103,19 @@
 /* Responsividade */
 @media (max-width: 768px) {
   .campo_login .formulario {
-      width: 95%;
-      padding: 20px;
+    width: 95%;
+    padding: 20px;
   }
 }
+
 /* Garante que os indicadores fiquem centralizados e visíveis */
 .indicadores {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    position: absolute;
-    bottom: 20px;
-    left: 0;
-    right: 0;
-    z-index: 10;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  z-index: 10;
 }

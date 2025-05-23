@@ -57,18 +57,18 @@ function validarCpfCnpj(value) {
 */
 function formatarCpfCnpj(value) {
   const numeros = value.replace(/\D/g, '');
-  
+
   if (numeros.length <= 11) {
-      return numeros
-          .replace(/(\d{3})(\d)/, '$1.$2')
-          .replace(/(\d{3})(\d)/, '$1.$2')
-          .replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+    return numeros
+      .replace(/(\d{3})(\d)/, '$1.$2')
+      .replace(/(\d{3})(\d)/, '$1.$2')
+      .replace(/(\d{3})(\d{1,2})$/, '$1-$2');
   } else {
-      return numeros
-          .replace(/^(\d{2})(\d)/, '$1.$2')
-          .replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3')
-          .replace(/\.(\d{3})(\d)/, '.$1/$2')
-          .replace(/(\d{4})(\d)/, '$1-$2');
+    return numeros
+      .replace(/^(\d{2})(\d)/, '$1.$2')
+      .replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3')
+      .replace(/\.(\d{3})(\d)/, '.$1/$2')
+      .replace(/(\d{4})(\d)/, '$1-$2');
   }
 }
 
@@ -79,10 +79,10 @@ function limparErros() {
   ELEMENTS.erro.textContent = '';
   const inputs = ELEMENTS.form.querySelectorAll('input');
   inputs.forEach(input => {
-      input.style.borderColor = '';
-      if (input.type === 'checkbox') {
-          input.parentElement.style.color = '';
-      }
+    input.style.borderColor = '';
+    if (input.type === 'checkbox') {
+      input.parentElement.style.color = '';
+    }
   });
 }
 
@@ -94,9 +94,9 @@ function limparErros() {
 function mostrarErro(message, fieldId = null) {
   ELEMENTS.erro.textContent = message;
   ELEMENTS.erro.style.color = 'red';
-  
+
   if (fieldId) {
-      document.getElementById(fieldId).style.borderColor = 'red';
+    document.getElementById(fieldId).style.borderColor = 'red';
   }
 }
 
@@ -105,13 +105,13 @@ function mostrarErro(message, fieldId = null) {
 */
 function setLoadingState(isLoading) {
   if (isLoading) {
-      ELEMENTS.btnCadastrar.disabled = true;
-      ELEMENTS.btnCadastrar.textContent = 'Cadastrando...';
-      ELEMENTS.btnCadastrar.style.opacity = '0.7';
+    ELEMENTS.btnCadastrar.disabled = true;
+    ELEMENTS.btnCadastrar.textContent = 'Cadastrando...';
+    ELEMENTS.btnCadastrar.style.opacity = '0.7';
   } else {
-      ELEMENTS.btnCadastrar.disabled = false;
-      ELEMENTS.btnCadastrar.textContent = 'Cadastrar';
-      ELEMENTS.btnCadastrar.style.opacity = '1';
+    ELEMENTS.btnCadastrar.disabled = false;
+    ELEMENTS.btnCadastrar.textContent = 'Cadastrar';
+    ELEMENTS.btnCadastrar.style.opacity = '1';
   }
 }
 
@@ -121,55 +121,55 @@ function setLoadingState(isLoading) {
 */
 function validarCampos() {
   const campos = {
-      nome: ELEMENTS.nome.value.trim(),
-      sobrenome: ELEMENTS.sobrenome.value.trim(),
-      dtNascimento: ELEMENTS.dtNascimento.value,
-      cpfCnpj: ELEMENTS.cpfCnpj.value.trim(),
-      email: ELEMENTS.email.value.trim(),
-      senha: ELEMENTS.senha.value,
-      confirmacao: ELEMENTS.confirmacao.value,
-      termo: ELEMENTS.termo.checked
+    nome: ELEMENTS.nome.value.trim(),
+    sobrenome: ELEMENTS.sobrenome.value.trim(),
+    dtNascimento: ELEMENTS.dtNascimento.value,
+    cpfCnpj: ELEMENTS.cpfCnpj.value.trim(),
+    email: ELEMENTS.email.value.trim(),
+    senha: ELEMENTS.senha.value,
+    confirmacao: ELEMENTS.confirmacao.value,
+    termo: ELEMENTS.termo.checked
   };
 
   // Campos obrigatórios
-  if (!campos.nome || !campos.sobrenome || !campos.dtNascimento || 
-      !campos.cpfCnpj || !campos.email || !campos.senha || !campos.confirmacao) {
-      mostrarErro(ERROR_MESSAGES.camposObrigatorios);
-      return false;
+  if (!campos.nome || !campos.sobrenome || !campos.dtNascimento ||
+    !campos.cpfCnpj || !campos.email || !campos.senha || !campos.confirmacao) {
+    mostrarErro(ERROR_MESSAGES.camposObrigatorios);
+    return false;
   }
 
   // Termos
   if (!campos.termo) {
-      mostrarErro(ERROR_MESSAGES.termosNaoAceitos);
-      return false;
+    mostrarErro(ERROR_MESSAGES.termosNaoAceitos);
+    return false;
   }
 
   // CPF/CNPJ
   if (!validarCpfCnpj(campos.cpfCnpj)) {
-      const message = campos.cpfCnpj.replace(/\D/g, '').length <= 11 ? 
-          ERROR_MESSAGES.cpfInvalido : ERROR_MESSAGES.cnpjInvalido;
-      mostrarErro(message, 'CPF_CNPJ');
-      return false;
+    const message = campos.cpfCnpj.replace(/\D/g, '').length <= 11 ?
+      ERROR_MESSAGES.cpfInvalido : ERROR_MESSAGES.cnpjInvalido;
+    mostrarErro(message, 'CPF_CNPJ');
+    return false;
   }
 
   // Email
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(campos.email)) {
-      mostrarErro(ERROR_MESSAGES.emailInvalido, 'email');
-      return false;
+    mostrarErro(ERROR_MESSAGES.emailInvalido, 'email');
+    return false;
   }
 
   // Senha
   if (campos.senha.length < 6) {
-      mostrarErro(ERROR_MESSAGES.senhaCurta, 'senha');
-      return false;
+    mostrarErro(ERROR_MESSAGES.senhaCurta, 'senha');
+    return false;
   }
 
   // Confirmação de senha
   if (campos.senha !== campos.confirmacao) {
-      mostrarErro(ERROR_MESSAGES.senhasDiferentes);
-      ELEMENTS.senha.style.borderColor = 'red';
-      ELEMENTS.confirmacao.style.borderColor = 'red';
-      return false;
+    mostrarErro(ERROR_MESSAGES.senhasDiferentes);
+    ELEMENTS.senha.style.borderColor = 'red';
+    ELEMENTS.confirmacao.style.borderColor = 'red';
+    return false;
   }
 
   return true;
@@ -180,30 +180,30 @@ function validarCampos() {
 */
 async function enviarParaAPI() {
   try {
-      const response = await fetch('https://go-wash-api.onrender.com/api/user', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-              name: `${ELEMENTS.nome.value.trim()} ${ELEMENTS.sobrenome.value.trim()}`,
-              email: ELEMENTS.email.value.trim(),
-              user_type_id: 1,
-              password: ELEMENTS.senha.value,
-              cpf_cnpj: ELEMENTS.cpfCnpj.value.replace(/\D/g, ''),
-              terms: 1,
-              birthday: ELEMENTS.dtNascimento.value
-          })
-      });
+    const response = await fetch('https://go-wash-api.onrender.com/api/user', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: `${ELEMENTS.nome.value.trim()} ${ELEMENTS.sobrenome.value.trim()}`,
+        email: ELEMENTS.email.value.trim(),
+        user_type_id: 1,
+        password: ELEMENTS.senha.value,
+        cpf_cnpj: ELEMENTS.cpfCnpj.value.replace(/\D/g, ''),
+        terms: 1,
+        birthday: ELEMENTS.dtNascimento.value
+      })
+    });
 
-      if (!response.ok) {
-          const errorData = await response.json();
-          throw new Error(errorData.message || ERROR_MESSAGES.erroCadastro);
-      }
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message || ERROR_MESSAGES.erroCadastro);
+    }
 
-      alert('Cadastro realizado com sucesso!');
-      window.location.href = '../entrar/index_entrar.html';
+    alert('Cadastro realizado com sucesso!');
+    window.location.href = '../entrar/index_entrar.html';
   } catch (error) {
-      console.error('Erro no cadastro:', error);
-      mostrarErro(error.message || ERROR_MESSAGES.erroConexao);
+    console.error('Erro no cadastro:', error);
+    mostrarErro(error.message || ERROR_MESSAGES.erroConexao);
   }
 }
 
@@ -212,9 +212,9 @@ async function enviarParaAPI() {
 */
 async function cadastrar() {
   limparErros();
-  
+
   if (!validarCampos()) {
-      return;
+    return;
   }
 
   setLoadingState(true);
@@ -230,8 +230,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Adicionar máscara para CPF/CNPJ
   if (ELEMENTS.cpfCnpj) {
-      ELEMENTS.cpfCnpj.addEventListener('input', (e) => {
-          e.target.value = formatarCpfCnpj(e.target.value);
-      });
+    ELEMENTS.cpfCnpj.addEventListener('input', (e) => {
+      e.target.value = formatarCpfCnpj(e.target.value);
+    });
   }
 });

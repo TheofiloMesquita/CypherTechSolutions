@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <title>CypherTech Solutions</title>
     <link rel="shortcut icon" type="imagex/png" href="imgs/icones/icone.png">
     <link rel="stylesheet" href="style.css">
     <script src="main.js"></script>
 </head>
+
 <body>
     <header class="header">
         <a href="index.html" aria-label="Página inicial">
             <img src="imgs/icones/logo.jpg" alt="Logo CypherTech" class="logo">
         </a>
-        
+
         <nav class="menu" id="offline" aria-label="Menu principal (deslogado)">
             <a href="paginas/sobre_nos/index_sobre_nos.html">Sobre Nós</a>
             <a href="paginas/entrar/index_entrar.html">Entrar</a>
             <a href="paginas/cadastro/index_cadastro.html">Cadastrar</a>
         </nav>
-        
+
         <nav class="menu" id="online" aria-label="Menu principal (logado)">
             <a href="paginas/sobre_nos/index_sobre_nos.html">Sobre Nós</a>
             <div class="perfil_hover" tabindex="0" aria-haspopup="true" aria-expanded="false">
                 <img src="imgs/icones/icone pessoa.png" alt="Perfil do usuário">
                 <div class="menu_hover" role="menu">
                     <a href="paginas/perfil/index_perfil.html" role="menuitem">Perfil</a>
+                    <a href="paginas/endereco/index_endereco.html" role="menuitem">Endereços</a>
                     <a href="paginas/senha/index_alterar_senha.html" role="menuitem">Alterar Senha</a>
                     <button onclick="logout()" role="menuitem">Sair</button>
                 </div>
@@ -39,7 +42,7 @@
             <div class="slide" style="background-image: url(imgs/slide2.jpg);">Visando sempre segurança</div>
             <div class="slide" style="background-image: url(imgs/slide3.jpg);">Melhorando a cada dia</div>
         </div>
-    
+
         <div class="indicadores">
             <div class="indicador ativo" data-indice="0"></div>
             <div class="indicador" data-indice="1"></div>
@@ -55,4 +58,5 @@
 
     <script src="main.js" defer></script>
 </body>
+
 </html>

@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const carrossel = document.querySelector('.carrossel');
     const slides = document.querySelectorAll('.slide');
     const indicadores = document.querySelectorAll('.indicador');
-    
+
     if (carrossel && slides.length && indicadores.length) {
         let slideAtual = 0;
         let intervalo = null;
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. Menu de Perfil (somente hover)
     const perfilHover = document.querySelector('.perfil_hover');
     const menuHover = document.querySelector('.menu_hover');
-    
+
     if (perfilHover && menuHover) {
         perfilHover.addEventListener('mouseenter', () => {
             menuHover.style.display = 'flex';
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 3. Controle de Login/Logout (simplificado)
     const menuOffline = document.getElementById("offline");
     const menuOnline = document.getElementById("online");
-    
+
     if (menuOffline && menuOnline) {
         const isLoggedIn = localStorage.getItem("User");
         menuOffline.style.display = isLoggedIn ? "none" : "flex";

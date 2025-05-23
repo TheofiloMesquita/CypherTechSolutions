@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de Endereço</title>
+    <link rel="stylesheet" href="style.endereco.css">
+    <link rel="stylesheet" href="../../style.css">
+</head>
+
+<body>
+    <header class="header">
+        <a href="../../index.html"><img src="../../imgs/icones/logo.jpg" alt="Logo" class="logo"></a>
+        <nav class="menu" id="offline">
+            <a href="../../index.html">Início</a>
+            <a href="../entrar/index_entrar.html">Entrar</a>
+            <a href="../cadastro/index_cadastro.html">Cadastrar</a>
+        </nav>
+        <nav class="menu" id="online">
+            <a href="../../index.html">Início</a>
+            <a href="../sobre_nos/index_sobre_nos.html">Sobre Nós</a>
+            <div class="perfil_hover">
+                <img src="../../imgs/icones/icone pessoa.png" alt="Perfil">
+                <div class="menu_hover">
+                    <a href="../perfil/index_perfil.html">Perfil</a>
+                    <a href="../senha/index_alterar_senha.html">Alterar Senha</a>
+                    <button onclick="logout()">Sair</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="tabela">
+        <h1>Lista de Endereços</h1>
+        <table class="campos">
+            <thead>
+                <tr>
+                    <th>Nº</th>
+                    <th>Título</th>
+                    <th>Cep</th>
+                    <th>Endereço</th>
+                    <th>Número</th>
+                    <th>Complemento</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr id="campo_endereco" style="display: none;">
+                    <td class="dados_id"></td>
+                    <td><input type="text" class="dados_titulo input-tabela"></td>
+                    <td><input type="text" class="dados_cep input-tabela"></td>
+                    <td><input type="text" class="dados_endereco input-tabela"></td>
+                    <td><input type="text" class="dados_numero input-tabela"></td>
+                    <td><input type="text" class="dados_complemento input-tabela"></td>
+                    <td class="acoes">
+                        <button class="btn-acao atualizar">Atualizar</button>
+                        <button class="btn-acao excluir">Excluir</button>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="7">
+                        <button class="botao novo-endereco" onclick="chamar_formulario()">
+                            Novo Endereço
+                        </button>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <div class="formulario" id="formulario">
+        <div class="dados">
+            <div>Titulo</div>
+            <input id="title" type="text">
+        </div>
+        <div class="dados">
+            <div>Cep</div>
+            <input id="cep" type="text">
+        </div>
+        <div class="dados">
+            <div>Endereço</div>
+            <input id="endereco" type="text">
+        </div>
+        <div class="dados">
+            <div>Complemento</div>
+            <input id="complemento" type="text">
+        </div>
+        <div class="dados">
+            <div>Número</div>
+            <input id="numero" type="text">
+        </div>
+
+        <button class="botao" onclick="cadastrar()">Cadastrar</button>
+    </div>
+
+    <script src="main_endereco.js"></script>
+</body>
+
+</html>

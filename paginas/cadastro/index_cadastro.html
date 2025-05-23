@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8"> <!-- Adicionado meta charset para garantir encoding correto -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Viewport para responsividade -->
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="style_cadastro.css">
 </head>
+
 <body>
     <!-- BARRA SUPERIOR -->
     <header class="header">
@@ -43,7 +45,7 @@
                 <label for="email">Email:</label>
                 <input type="email" class="usuario" id="email" required>
             </div>
-            
+
             <div class="dados">
                 <label for="senha">Senha:</label>
                 <input type="password" class="usuario" id="senha" minlength="6" required>
@@ -51,11 +53,12 @@
                     <img src="../../imgs/icones/show.png" alt="exibir" class="icon" id="icon-senha">
                 </button>
             </div>
-            
+
             <div class="dados">
                 <label for="confirmacao">Confirme sua Senha:</label>
                 <input type="password" class="usuario" id="confirmacao" minlength="6" required>
-                <button type="button" onclick="mostrar_confirmacao()" class="icon-button" aria-label="Mostrar confirmação de senha">
+                <button type="button" onclick="mostrar_confirmacao()" class="icon-button"
+                    aria-label="Mostrar confirmação de senha">
                     <img src="../../imgs/icones/show.png" alt="exibir" class="icon" id="icon-confirmacao">
                 </button>
             </div>
@@ -64,11 +67,11 @@
                 <input type="checkbox" id="termo" required>
                 <label for="termo">Aceite todos os termos</label>
             </div>
-            
+
             <div id="erro" role="alert"></div> <!-- Adicionado role para acessibilidade -->
-            
+
             <button type="button" onclick="cadastrar()" class="botao">Cadastrar</button>
-            
+
             <div>
                 Já tem cadastro?
                 <a href="../entrar/index_entrar.html" class="link">Entrar</a>
@@ -88,4 +91,5 @@
 
     <script src="main_cadastro.js" defer></script> <!-- Adicionado defer para carregar após o HTML -->
 </body>
+
 </html>
