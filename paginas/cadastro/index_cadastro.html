@@ -1,95 +1,94 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
-<head>
-    <meta charset="UTF-8"> <!-- Adicionado meta charset para garantir encoding correto -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Viewport para responsividade -->
-    <title>CypherTech - Cadastre-se</title>
-    <link rel="shortcut icon" type="imagex/png" href="../../imgs/icones/icone.png">
-    <link rel="stylesheet" href="../../style.css">
-    <link rel="stylesheet" href="style_cadastro.css">
-</head>
+    <head>
+        <meta charset="UTF-8"> <!-- Adicionado meta charset para garantir encoding correto -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Viewport para responsividade -->
+        <title>CypherTech - Cadastre-se</title>
+        <link rel="shortcut icon" type="imagex/png" href="../../imgs/icones/icone.png">
+        <link rel="stylesheet" href="../../style.css">
+        <link rel="stylesheet" href="style_cadastro.css">
+    </head>
 
-<body>
-    <!-- BARRA SUPERIOR -->
-    <header class="header">
-        <a href="../../index.html" aria-label="Voltar para página inicial">
-            <img src="../../imgs/icones/logo.jpg" alt="Logo CypherTech" class="logo">
-        </a>
-        <nav class="menu" aria-label="Menu principal">
-            <a href="../../index.html">Tela Inicial</a>
-            <a href="../sobre_nos/index_sobre_nos.html">Sobre Nós</a>
-        </nav>
-    </header>
+    <body>
+        <!-- BARRA SUPERIOR -->
+        <header class="header">
+            <a href="../../index.html" aria-label="Voltar para página inicial">
+                <img src="../../imgs/icones/logo.jpg" alt="Logo CypherTech" class="logo">
+            </a>
+            <nav class="menu" aria-label="Menu principal">
+                <a href="../../index.html">Tela Inicial</a>
+                <a href="../sobre_nos/index_sobre_nos.html">Sobre Nós</a>
+            </nav>
+        </header>
 
-    <!-- CONTEÚDO CENTRAL - FORMULÁRIO DE CADASTRO -->
-    <main class="campo_cadastro"> <!-- Alterado para main para melhor semântica -->
-        <form class="formulario" id="formCadastro"> <!-- Adicionado form com ID para melhor manipulação -->
-            <div class="dados">
-                <label for="nome">Nome:</label> <!-- Adicionado labels para melhor acessibilidade -->
-                <input type="text" class="usuario" id="nome" required>
-            </div>
-            <div class="dados">
-                <label for="sobrenome">Sobrenome:</label>
-                <input type="text" class="usuario" id="sobrenome" required>
-            </div>
-            <div class="dados">
-                <label for="dt_nascimento">Data de Nascimento:</label>
-                <input type="date" class="usuario" id="dt_nascimento" required>
-            </div>
-            <div class="dados">
-                <label for="CPF_CNPJ">CPF / CNPJ:</label>
-                <input type="text" class="usuario" id="CPF_CNPJ" minlength="11" maxlength="14" required>
-            </div>
-            <div class="dados">
-                <label for="email">Email:</label>
-                <input type="email" class="usuario" id="email" required>
-            </div>
+        <!-- FORMULÁRIO DE CADASTRO -->
+        <main class="campo_cadastro">
+            <form class="formulario" id="formCadastro">
+                <div class="dados">
+                    <label for="nome">Nome:</label>
+                    <input type="text" class="usuario" id="nome" required>
+                </div>
+                <div class="dados">
+                    <label for="sobrenome">Sobrenome:</label>
+                    <input type="text" class="usuario" id="sobrenome" required>
+                </div>
+                <div class="dados">
+                    <label for="dt_nascimento">Data de Nascimento:</label>
+                    <input type="date" class="usuario" id="dt_nascimento" required>
+                </div>
+                <div class="dados">
+                    <label for="CPF_CNPJ">CPF / CNPJ:</label>
+                    <input type="text" class="usuario" id="CPF_CNPJ" minlength="11" maxlength="14" required>
+                </div>
+                <div class="dados">
+                    <label for="email">Email:</label>
+                    <input type="email" class="usuario" id="email" required>
+                </div>
 
-            <div class="dados">
-                <label for="senha">Senha:</label>
-                <input type="password" class="usuario" id="senha" minlength="6" required>
-                <button type="button" onclick="mostrar_senha()" class="icon-button" aria-label="Mostrar senha">
-                    <img src="../../imgs/icones/show.png" alt="exibir" class="icon" id="icon-senha">
-                </button>
-            </div>
+                <div class="dados">
+                    <label for="senha">Senha:</label>
+                    <input type="password" class="usuario" id="senha" minlength="6" required>
+                    <button type="button" onclick="mostrar_senha()" class="icon-button" aria-label="Mostrar senha">
+                        <img src="../../imgs/icones/show.png" alt="exibir" class="icon" id="icon-senha">
+                    </button>
+                </div>
 
-            <div class="dados">
-                <label for="confirmacao">Confirme sua Senha:</label>
-                <input type="password" class="usuario" id="confirmacao" minlength="6" required>
-                <button type="button" onclick="mostrar_confirmacao()" class="icon-button"
-                    aria-label="Mostrar confirmação de senha">
-                    <img src="../../imgs/icones/show.png" alt="exibir" class="icon" id="icon-confirmacao">
-                </button>
-            </div>
+                <div class="dados">
+                    <label for="confirmacao">Confirme sua Senha:</label>
+                    <input type="password" class="usuario" id="confirmacao" minlength="6" required>
+                    <button type="button" onclick="mostrar_confirmacao()" class="icon-button"
+                        aria-label="Mostrar confirmação de senha">
+                        <img src="../../imgs/icones/show.png" alt="exibir" class="icon" id="icon-confirmacao">
+                    </button>
+                </div>
 
-            <div class="checkbox">
-                <input type="checkbox" id="termo" required>
-                <label for="termo">Aceite todos os termos</label>
-            </div>
+                <div class="checkbox">
+                    <input type="checkbox" id="termo" required>
+                    <label for="termo">Aceite todos os termos</label>
+                </div>
 
-            <div id="erro" role="alert"></div> <!-- Adicionado role para acessibilidade -->
+                <div id="erro" role="alert"></div>
 
-            <button type="button" onclick="cadastrar()" class="botao">Cadastrar</button>
+                <button type="button" onclick="cadastrar()" class="botao_principal">Cadastrar</button>
 
-            <div>
-                Já tem cadastro?
-                <a href="../entrar/index_entrar.html" class="link">Entrar</a>
-            </div>
-        </form>
-    </main>
+                <div>
+                    Já tem cadastro?
+                    <a href="../entrar/index_entrar.html" class="link">Entrar</a>
+                </div>
+            </form>
+        </main>
 
-    <!-- BARRA INFERIOR -->
-    <footer class="footer" aria-label="Rodapé">
-        <p>© CypherTech Solutions <span id="current-year"></span></p>
-    </footer>
+        <!-- BARRA INFERIOR -->
+        <footer class="footer" aria-label="Rodapé">
+            <p>© CypherTech Solutions <span id="current-year"></span></p>
+        </footer>
 
-    <script>
-        // Atualiza o ano atual no footer
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-    </script>
+        <script>
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+        </script>
 
-    <script src="main_cadastro.js" defer></script> <!-- Adicionado defer para carregar após o HTML -->
-</body>
+        <script src="main_cadastro.js" defer></script>
+    </body>
 
 </html>

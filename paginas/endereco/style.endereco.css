@@ -1,51 +1,63 @@
-:root{
-    --cor-fundo: white;
-}
-body{
-    margin: 0px;
-    background-image: url(../../imgs/fundo.jpg);
-}
-.tabela{
+.tabela {
     display: flex;
     flex-direction: column;
     width: 80vw;
     justify-self: center;
     align-items: center;
     text-align: center;
-    background-color: var(--cor-fundo);
-    border: 3px solid;
-    border-radius: 2vw;
+    background-color: white;
+    border: var(--borda-padrao);
+    border-radius: var(--arredondar);
 }
-.formulario{
-    background-color: var(--cor-fundo);
+
+.campos input {
+    width: 8vw;
+}
+
+.campos {
+    width: 90%;
+}
+
+.formulario {
+    background-color: white;
     width: 30vw;
-    height: 50vh;
     display: none;
     flex-direction: column;
     align-items: center;
     justify-self: center;
     justify-content: space-around;
-    border-radius: 2vw;
-    border: 3px solid;
+    border: var(--borda-padrao);
+    border-radius: var(--arredondar);
 }
-.dados{
+
+.dados {
     width: 70%;
     display: flex;
     flex-direction: column;
 }
 
-/* Estilo do botão de login */
-.botao {
-  width: 60%;
-  padding: 5px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 1vw;
-  cursor: pointer;
-  transition: background-color 0.3s;
+/* Estilo do botão de ações */
+.btn-acao {
+    width: 8vw;
+    background-color: var(--cor-primaria);
+    color: white;
+    border: none;
+    border-radius: 1vw;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-.botao:hover {
-  background-color: #45a049;
+.btn-acao:hover {
+    background-color: #45a049;
+}
+
+/* responsividade */
+@media (max-width: 768px) {
+    .campos {
+        width: 80%;
+    }
+
+    .formulario {
+        width: 50%;
+    }
 }
