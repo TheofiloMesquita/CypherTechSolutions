@@ -20,7 +20,10 @@ a {
 .link:hover {
 	text-decoration: underline;
 }
-
+.titulo_principal{
+	font-size: 15px;
+	padding: 5px;
+}
 /* Menu */
 .header {
 	width: 100%;
@@ -48,11 +51,6 @@ a {
 	align-items: center;
 }
 
-.perfil_hover img {
-	width: 5vw;
-	filter: invert(1);
-}
-
 .menu_hover {
 	display: none;
 	position: absolute;
@@ -72,10 +70,6 @@ a {
 
 .perfil_hover:hover .menu_hover {
 	display: flex;
-}
-
-.logo {
-	height: 8vw;
 }
 
 /* Formulario */

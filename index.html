@@ -1,31 +1,36 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
     <!-- Menu Superior -->
 
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="CypherTech Solutions - Transformando ideias em inovação tecnológica">
         <title>CypherTech Solutions</title>
         <link rel="shortcut icon" type="imagex/png" href="imgs/icones/icone.png">
         <link rel="stylesheet" href="style.css">
-        <script src="main.js"></script>
     </head>
 
     <body>
-        <header class="header">
+        <!-- Barra Superior -->
+        <header class="header" role="banner">
             <a href="index.html" aria-label="Página inicial">
-                <img src="imgs/icones/logo.jpg" alt="Logo CypherTech" class="logo">
+                <img src="imgs/icones/logo.jpg" alt="Logo CypherTech Solutions" class="logo" width="130" height="130">
             </a>
 
-            <nav class="menu" id="offline" aria-label="Menu principal (deslogado)">
+            <nav class="menu" id="offline" aria-label="Menu principal (usuário não logado)">
                 <a href="paginas/sobre_nos/index_sobre_nos.html">Sobre Nós</a>
                 <a href="paginas/entrar/index_entrar.html">Entrar</a>
                 <a href="paginas/cadastro/index_cadastro.html">Cadastrar</a>
             </nav>
 
-            <nav class="menu" id="online" aria-label="Menu principal (logado)">
+            <nav class="menu" id="online" aria-label="Menu principal (usuário logado)">
                 <a href="paginas/sobre_nos/index_sobre_nos.html">Sobre Nós</a>
-                <div class="perfil_hover" tabindex="0" aria-haspopup="true" aria-expanded="false">
-                    <img src="imgs/icones/icone pessoa.png" alt="Perfil do usuário">
+                <div class="perfil_hover" tabindex="0" aria-haspopup="true" aria-expanded="false"
+                    aria-label="Menu do perfil">
+                    <img src="imgs/icones/icone pessoa.png" alt="Ícone do perfil do usuário" width="80" height="80"
+                        style="filter: invert(1);">
                     <div class="menu_hover" role="menu">
                         <a href="paginas/perfil/index_perfil.html" role="menuitem">Perfil</a>
                         <a href="paginas/endereco/index_endereco.html" role="menuitem">Endereços</a>
@@ -37,24 +42,38 @@
         </header>
 
         <!-- Carrossel -->
-        <div class="carrossel-container">
-            <div class="carrossel">
-                <div class="slide" style="background-image: url(imgs/slide.jpg);">Transformando ideias em inovação</div>
-                <div class="slide" style="background-image: url(imgs/slide1.jpg);">Conectando realidades</div>
-                <div class="slide" style="background-image: url(imgs/slide2.jpg);">Visando sempre segurança</div>
-                <div class="slide" style="background-image: url(imgs/slide3.jpg);">Melhorando a cada dia</div>
-            </div>
+        <main role="main">
+            <div class="carrossel-container">
+                <div class="carrossel">
+                    <div class="slide" style="background-image: url(imgs/slide.jpg);"
+                        aria-label="Slide 1: Transformando ideias em inovação">
+                        <h2>Transformando ideias em inovação</h2>
+                    </div>
+                    <div class="slide" style="background-image: url(imgs/slide1.jpg);"
+                        aria-label="Slide 2: Conectando realidades">
+                        <h2>Conectando realidades</h2>
+                    </div>
+                    <div class="slide" style="background-image: url(imgs/slide2.jpg);"
+                        aria-label="Slide 3: Visando sempre segurança">
+                        <h2>Visando sempre segurança</h2>
+                    </div>
+                    <div class="slide" style="background-image: url(imgs/slide3.jpg);"
+                        aria-label="Slide 4: Melhorando a cada dia">
+                        <h2>Melhorando a cada dia</h2>
+                    </div>
+                </div>
 
-            <div class="indicadores">
-                <div class="indicador ativo" data-indice="0"></div>
-                <div class="indicador" data-indice="1"></div>
-                <div class="indicador" data-indice="2"></div>
-                <div class="indicador" data-indice="3"></div>
+                <div class="indicadores" aria-label="Selecionador de slides">
+                    <button class="indicador ativo" data-indice="0" aria-label="Slide 1"></button>
+                    <button class="indicador" data-indice="1" aria-label="Slide 2"></button>
+                    <button class="indicador" data-indice="2" aria-label="Slide 3"></button>
+                    <button class="indicador" data-indice="3" aria-label="Slide 4"></button>
+                </div>
             </div>
-        </div>
+        </main>
 
-        <!-- BARRA INFERIOR -->
-        <footer class="footer" aria-label="Rodapé">
+
+        <footer class="footer" role="contentinfo">
             <p>© CypherTech Solutions <span id="current-year"></span></p>
         </footer>
 

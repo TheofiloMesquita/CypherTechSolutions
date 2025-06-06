@@ -9,7 +9,7 @@ let ELEMENTS = {
 	confirmacao: document.getElementById('confirmacao'),
 	termo: document.getElementById('termo'),
 	erro: document.getElementById('erro'),
-	btnCadastrar: document.querySelector('.botao_principal'),
+	btnCadastrar: document.getElementById('btnCadastrar'),
 	iconSenha: document.getElementById('icon-senha'),
 	iconConfirmacao: document.getElementById('icon-confirmacao')
 };

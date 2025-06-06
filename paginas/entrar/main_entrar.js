@@ -3,7 +3,7 @@ const elementos = {
 	email: document.getElementById('email'),
 	senha: document.getElementById('senha'),
 	erro: document.getElementById('erro'),
-	btnSubmit: document.querySelector('.botao_principal'),
+	btnSubmit: document.getElementById('btnEntrar'),
 	iconSenha: document.getElementById('icon-senha')
 };
 
@@ -33,15 +33,18 @@ function limparErros() {
 
 function mostrarErro(message, field = null) {
 	elementos.erro.textContent = message;
+	elementos.erro.style.color = 'red';
 	if (field) {
 		document.getElementById(field).style.borderColor = 'red';
 	}
 }
 
 function setLoadingState(isLoading) {
-	elementos.btnSubmit.disabled = isLoading;
-	elementos.btnSubmit.textContent = isLoading ? 'Entrando...' : 'Entrar';
-	elementos.btnSubmit.style.opacity = isLoading ? '0.7' : '1';
+	if (elementos.btnSubmit) {
+		elementos.btnSubmit.disabled = isLoading;
+		elementos.btnSubmit.textContent = isLoading ? 'Entrando...' : 'Entrar';
+		elementos.btnSubmit.style.opacity = isLoading ? '0.7' : '1';
+	}
 }
 
 function storeUserData(userData) {
@@ -53,7 +56,6 @@ function storeUserData(userData) {
 	}
 }
 
-response = null
 async function loginAPI(email, senha) {
 	try {
 		const response = await fetch('https://go-wash-api.onrender.com/api/login', {
@@ -88,7 +90,6 @@ async function handleLogin(event) {
 		mostrarErro(ERROR_MESSAGES.camposObrigatorios);
 		if (!email) elementos.email.style.borderColor = 'red';
 		if (!senha) elementos.senha.style.borderColor = 'red';
-		elementos.erro.style.color = 'red';
 		return;
 	}
 

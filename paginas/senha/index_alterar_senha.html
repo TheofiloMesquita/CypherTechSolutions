@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description"
+            content="Acesse sua conta na CypherTech Solutions para desfrutar de soluções tecnológicas inovadoras">
+        <title>Alterar Senha | CypherTech Solutions</title>
+        <link rel="shortcut icon" type="imagex/png" href="../../imgs/icones/icone.png">
+        <link rel="stylesheet" href="../../style.css">
+        <link rel="stylesheet" href="style_entrar.css">
+    </head>
+
+    <body>
+        <!-- Cabeçalho -->
+        <header class="header" role="banner">
+            <a href="../../index.html" aria-label="Página inicial">
+                <img src="../../imgs/icones/logo.jpg" alt="Logo CypherTech Solutions" class="logo" width="130"
+                    height="130">
+            </a>
+
+            <nav class="menu" id="offline" aria-label="Menu principal (usuário não logado)">
+                <a href="../../index.html">Início</a>
+                <a href="../cadastro/index_cadastro.html">Cadastrar</a>
+                <a href="../sobre_nos/index_sobre_nos.html">Sobre Nós</a>
+            </nav>
+
+            <nav class="menu" id="online" aria-label="Menu principal (usuário logado)" hidden>
+                <a href="../../index.html">Início</a>
+                <div class="perfil_hover" tabindex="0" aria-haspopup="true" aria-expanded="false"
+                    aria-label="Menu do perfil">
+                    <img src="../../imgs/icones/icone pessoa.png" alt="Ícone do perfil" width="80" height="80"
+                        style="filter: invert(1);">
+                    <div class="menu_hover" role="menu">
+                        <a href="../perfil/index_perfil.html" role="menuitem">Perfil</a>
+                        <a href="../endereco/index_endereco.html" role="menuitem">Endereços</a>
+                        <a href="../senha/index_alterar_senha.html" role="menuitem">Alterar Senha</a>
+                        <button class="botao_principal" onclick="logout()" role="menuitem">Sair</button>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+</body>
+</html>

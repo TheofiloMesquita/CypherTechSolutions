@@ -1,111 +1,136 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Tela de Endereço</title>
+        <meta name="description" content="Gerencie seus endereços na CypherTech Solutions para entregas e serviços">
+        <title>Endereços | CypherTech Solutions</title>
         <link rel="shortcut icon" type="imagex/png" href="../../imgs/icones/icone.png">
-        <link rel="stylesheet" href="style.endereco.css">
         <link rel="stylesheet" href="../../style.css">
+        <link rel="stylesheet" href="style.endereco.css">
     </head>
 
     <body>
-        <header class="header">
-            <a href="../../index.html"><img src="../../imgs/icones/logo.jpg" alt="Logo" class="logo"></a>
-            <nav class="menu" id="offline">
+        <!-- Cabeçalho -->
+        <header class="header" role="banner">
+            <a href="../../index.html" aria-label="Página inicial">
+                <img src="../../imgs/icones/logo.jpg" alt="Logo CypherTech Solutions" class="logo" width="130"
+                    height="130">
+            </a>
+
+            <nav class="menu" id="offline" aria-label="Menu principal (usuário não logado)" hidden>
                 <a href="../../index.html">Início</a>
                 <a href="../entrar/index_entrar.html">Entrar</a>
                 <a href="../cadastro/index_cadastro.html">Cadastrar</a>
             </nav>
-            <nav class="menu" id="online">
+
+            <nav class="menu" id="online" aria-label="Menu principal (usuário logado)">
                 <a href="../../index.html">Início</a>
                 <a href="../sobre_nos/index_sobre_nos.html">Sobre Nós</a>
-                <div class="perfil_hover">
-                    <img src="../../imgs/icones/icone pessoa.png" alt="Perfil">
-                    <div class="menu_hover">
-                        <a href="../perfil/index_perfil.html">Perfil</a>
-                        <a href="../senha/index_alterar_senha.html">Alterar Senha</a>
-                        <button class="botao_principal" onclick="logout()">Sair</button>
+                <div class="perfil_hover" tabindex="0" aria-haspopup="true" aria-expanded="false"
+                    aria-label="Menu do perfil">
+                    <img src="../../imgs/icones/icone pessoa.png" alt="Ícone do perfil" width="80" height="80"
+                        style="filter: invert(1);">
+                    <div class="menu_hover" role="menu">
+                        <a href="../perfil/index_perfil.html" role="menuitem">Perfil</a>
+                        <a href="../endereco/index_endereco.html" role="menuitem">Endereços</a>
+                        <a href="../senha/index_alterar_senha.html" role="menuitem">Alterar Senha</a>
+                        <button class="botao_principal" onclick="logout()" role="menuitem">Sair</button>
                     </div>
                 </div>
             </nav>
         </header>
 
-        <div class="tabela">
-            <h1>Lista de Endereços</h1>
-            <table class="campos">
-                <thead>
-                    <tr>
-                        <th>Nº</th>
-                        <th>Título</th>
-                        <th>Cep</th>
-                        <th>Endereço</th>
-                        <th>Número</th>
-                        <th>Complemento</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr id="campo_endereco" style="display: none;">
-                        <td class="dados_id"></td>
-                        <td><input type="text" class="dados_titulo input-tabela"></td>
-                        <td><input type="text" class="dados_cep input-tabela"></td>
-                        <td><input type="text" class="dados_endereco input-tabela"></td>
-                        <td><input type="text" class="dados_numero input-tabela"></td>
-                        <td><input type="text" class="dados_complemento input-tabela"></td>
-                        <td class="acoes">
-                            <button class="btn-acao atualizar">Atualizar</button>
-                            <button class="btn-acao excluir">Excluir</button>
-                        </td>
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td colspan="7">
-                            <button class="botao_principal" onclick="chamar_formulario()">
-                                Novo Endereço
-                            </button>
-                        </td>
-                    </tr>
-                </tfoot>
-            </table>
-        </div>
+        <!-- Conteúdo Principal -->
+        <main role="main">
+            <section class="tabela" aria-labelledby="enderecos-titulo">
+                <h1 id="enderecos-titulo">Lista de Endereços</h1>
+                <div class="table-responsive">
+                    <table class="campos" aria-describedby="enderecos-desc">
+                        <caption id="enderecos-desc" hidden>Lista de endereços cadastrados pelo usuário</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Nº</th>
+                                <th scope="col">Título</th>
+                                <th scope="col">CEP</th>
+                                <th scope="col">Endereço</th>
+                                <th scope="col">Número</th>
+                                <th scope="col">Complemento</th>
+                                <th scope="col">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr id="campo_endereco" style="display: none;">
+                                <td class="dados_id" headers="numero"></td>
+                                <td headers="titulo"><input type="text" class="dados_titulo input-tabela"
+                                        id="edit-titulo" aria-label="Editar título"></td>
+                                <td headers="cep"><input type="text" class="dados_cep input-tabela" id="edit-cep"
+                                        aria-label="Editar CEP" inputmode="numeric"></td>
+                                <td headers="endereco"><input type="text" class="dados_endereco input-tabela"
+                                        id="edit-endereco" aria-label="Editar endereço"></td>
+                                <td headers="numero"><input type="text" class="dados_numero input-tabela"
+                                        id="edit-numero" aria-label="Editar número" inputmode="numeric"></td>
+                                <td headers="complemento"><input type="text" class="dados_complemento input-tabela"
+                                        id="edit-complemento" aria-label="Editar complemento"></td>
+                                <td class="acoes" headers="acoes">
+                                    <button class="btn-acao atualizar"
+                                        aria-label="Atualizar endereço">Atualizar</button>
+                                    <button class="btn-acao excluir" aria-label="Excluir endereço">Excluir</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="7">
+                                    <button class="botao_principal" onclick="chamar_formulario()"
+                                        aria-label="Adicionar novo endereço">
+                                        Novo Endereço
+                                    </button>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </section>
 
-        <div class="formulario" id="formulario">
-            <div class="dados">
-                <div>Titulo</div>
-                <input id="title" type="text">
-            </div>
-            <div class="dados">
-                <div>Cep</div>
-                <input id="cep" type="text">
-            </div>
-            <div class="dados">
-                <div>Endereço</div>
-                <input id="endereco" type="text">
-            </div>
-            <div class="dados">
-                <div>Complemento</div>
-                <input id="complemento" type="text">
-            </div>
-            <div class="dados">
-                <div>Número</div>
-                <input id="numero" type="text">
-            </div>
+            <section class="formulario" id="formulario" aria-labelledby="form-endereco-titulo" hidden>
+                <h2 id="form-endereco-titulo" hidden>Formulário de Endereço</h2>
+                <div class="dados">
+                    <label for="title">Título:</label>
+                    <input id="title" type="text" required aria-required="true">
+                </div>
+                <div class="dados">
+                    <label for="cep">CEP:</label>
+                    <input id="cep" type="text" inputmode="numeric" required aria-required="true">
+                </div>
+                <div class="dados">
+                    <label for="endereco">Endereço:</label>
+                    <input id="endereco" type="text" required aria-required="true">
+                </div>
+                <div class="dados">
+                    <label for="numero">Número:</label>
+                    <input id="numero" type="text" inputmode="numeric" required aria-required="true">
+                </div>
+                <div class="dados">
+                    <label for="complemento">Complemento:</label>
+                    <input id="complemento" type="text">
+                </div>
 
-            <button class="botao_principal" onclick="cadastrar()">Cadastrar</button>
-        </div>
+                <button type="button" class="botao_principal" onclick="cadastrar()"
+                    aria-label="Salvar endereço">Cadastrar</button>
+            </section>
+        </main>
 
-        <!-- BARRA INFERIOR -->
-        <footer class="footer" aria-label="Rodapé">
+        <!-- Rodapé -->
+        <footer class="footer" role="contentinfo">
             <p>© CypherTech Solutions <span id="current-year"></span></p>
         </footer>
 
         <script>
             document.getElementById('current-year').textContent = new Date().getFullYear();
         </script>
-        
+
         <script src="main_endereco.js" defer></script>
     </body>
 

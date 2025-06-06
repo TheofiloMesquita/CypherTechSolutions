@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>CypherTech - Entrar</title>
+        <meta name="description"
+            content="Acesse sua conta na CypherTech Solutions para desfrutar de soluções tecnológicas inovadoras">
+        <title>Entrar | CypherTech Solutions</title>
         <link rel="shortcut icon" type="imagex/png" href="../../imgs/icones/icone.png">
         <link rel="stylesheet" href="../../style.css">
         <link rel="stylesheet" href="style_entrar.css">
@@ -12,50 +14,74 @@
 
     <body>
         <!-- Cabeçalho -->
-        <header class="header">
-            <a href="../../index.html" aria-label="Voltar para página inicial">
-                <img src="../../imgs/icones/logo.jpg" alt="Logo CypherTech" class="logo">
+        <header class="header" role="banner">
+            <a href="../../index.html" aria-label="Página inicial">
+                <img src="../../imgs/icones/logo.jpg" alt="Logo CypherTech Solutions" class="logo" width="130"
+                    height="130">
             </a>
-            <nav class="menu" aria-label="Menu principal">
-                <a href="../../index.html">Tela Inicial</a>
+
+            <nav class="menu" id="offline" aria-label="Menu principal (usuário não logado)">
+                <a href="../../index.html">Início</a>
+                <a href="../cadastro/index_cadastro.html">Cadastrar</a>
                 <a href="../sobre_nos/index_sobre_nos.html">Sobre Nós</a>
+            </nav>
+
+            <nav class="menu" id="online" aria-label="Menu principal (usuário logado)" hidden>
+                <a href="../../index.html">Início</a>
+                <div class="perfil_hover" tabindex="0" aria-haspopup="true" aria-expanded="false"
+                    aria-label="Menu do perfil">
+                    <img src="../../imgs/icones/icone pessoa.png" alt="Ícone do perfil" width="80" height="80"
+                        style="filter: invert(1);">
+                    <div class="menu_hover" role="menu">
+                        <a href="../perfil/index_perfil.html" role="menuitem">Perfil</a>
+                        <a href="../endereco/index_endereco.html" role="menuitem">Endereços</a>
+                        <a href="../senha/index_alterar_senha.html" role="menuitem">Alterar Senha</a>
+                        <button class="botao_principal" onclick="logout()" role="menuitem">Sair</button>
+                    </div>
+                </div>
             </nav>
         </header>
 
-        <!-- Conteúdo Principal -->
-        <main class="campo_login">
-            <form class="formulario" id="formLogin" novalidate>
+        <!-- Formulário de Login -->
+        <main class="campo_login" role="main">
+            <form class="formulario" id="formLogin" aria-label="Formulário de login">
+                <div class="titulo_principal">
+                    Acesse sua conta
+                </div>
+
                 <div class="dados">
                     <label for="email">Email:</label>
-                    <input type="email" id="email" class="usuario" required>
+                    <input type="email" class="usuario" id="email" name="email" required aria-required="true"
+                        inputmode="email">
                 </div>
 
                 <div class="dados">
                     <label for="senha">Senha:</label>
-                    <input type="password" id="senha" class="usuario" minlength="6" required>
-                    <button type="button" onclick="mostrar_senha()" class="icon-button" aria-label="Mostrar senha">
-                        <img src="../../imgs/icones/show.png" alt="exibir" class="icon" id="icon-senha">
+                    <input type="password" class="usuario" id="senha" name="senha" minlength="6" required
+                        aria-required="true" aria-describedby="dica-senha">
+                    <button type="button" onclick="mostrar_senha()" class="icon-button" aria-label="Mostrar senha"
+                        aria-controls="senha">
+                        <img src="../../imgs/icones/show.png" alt="Ícone de visualização" class="icon" id="icon-senha">
                     </button>
+                    <small id="dica-senha">Mínimo 6 caracteres</small>
                 </div>
 
-                <div id="erro" role="alert"></div>
+                <div id="erro" role="alert" aria-live="assertive"></div>
+                
+                <button type="submit" id="btnEntrar" class="botao_principal" aria-label="Acessar conta">Entrar</button>
 
-                <button type="submit" class="botao_principal">Entrar</button>
-
-                <div class="link-cadastro">
-                    Não Possui Cadastro?
-                    <a href="../cadastro/index_cadastro.html" class="link">Cadastrar</a>
-                </div>
+                <p class="texto-cadastro">
+                    Não possui cadastro? <a href="../cadastro/index_cadastro.html" class="link">Cadastre-se</a>
+                </p>
             </form>
         </main>
 
-        <!-- BARRA INFERIOR -->
-        <footer class="footer" aria-label="Rodapé">
+        <!-- Rodapé -->
+        <footer class="footer" role="contentinfo">
             <p>© CypherTech Solutions <span id="current-year"></span></p>
         </footer>
 
         <script>
-            // Atualiza o ano atual no footer
             document.getElementById('current-year').textContent = new Date().getFullYear();
         </script>
 

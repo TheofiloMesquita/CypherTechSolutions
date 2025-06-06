@@ -1,86 +1,122 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
     <head>
-        <meta charset="UTF-8"> <!-- Adicionado meta charset para garantir encoding correto -->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Viewport para responsividade -->
-        <title>CypherTech - Cadastre-se</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description"
+            content="Cadastre-se na CypherTech Solutions para acessar soluções tecnológicas inovadoras">
+        <title>Cadastro | CypherTech Solutions</title>
         <link rel="shortcut icon" type="imagex/png" href="../../imgs/icones/icone.png">
         <link rel="stylesheet" href="../../style.css">
         <link rel="stylesheet" href="style_cadastro.css">
     </head>
 
     <body>
-        <!-- BARRA SUPERIOR -->
-        <header class="header">
-            <a href="../../index.html" aria-label="Voltar para página inicial">
-                <img src="../../imgs/icones/logo.jpg" alt="Logo CypherTech" class="logo">
+        <!-- Cabeçalho -->
+        <header class="header" role="banner">
+            <a href="../../index.html" aria-label="Página inicial">
+                <img src="../../imgs/icones/logo.jpg" alt="Logo CypherTech Solutions" class="logo" width="130"
+                    height="130">
             </a>
-            <nav class="menu" aria-label="Menu principal">
-                <a href="../../index.html">Tela Inicial</a>
+
+            <nav class="menu" id="offline" aria-label="Menu principal (usuário não logado)">
+                <a href="../../index.html">Início</a>
+                <a href="../entrar/index_entrar.html">Entrar</a>
                 <a href="../sobre_nos/index_sobre_nos.html">Sobre Nós</a>
+            </nav>
+
+            <nav class="menu" id="online" aria-label="Menu principal (usuário logado)" hidden>
+                <a href="../../index.html">Início</a>
+                <div class="perfil_hover" tabindex="0" aria-haspopup="true" aria-expanded="false"
+                    aria-label="Menu do perfil">
+                    <img src="../../imgs/icones/icone pessoa.png" alt="Ícone do perfil" width="80" height="80"
+                        style="filter: invert(1);">
+                    <div class="menu_hover" role="menu">
+                        <a href="../perfil/index_perfil.html" role="menuitem">Perfil</a>
+                        <a href="../endereco/index_endereco.html" role="menuitem">Endereços</a>
+                        <a href="../senha/index_alterar_senha.html" role="menuitem">Alterar Senha</a>
+                        <button class="botao_principal" onclick="logout()" role="menuitem">Sair</button>
+                    </div>
+                </div>
             </nav>
         </header>
 
-        <!-- FORMULÁRIO DE CADASTRO -->
-        <main class="campo_cadastro">
-            <form class="formulario" id="formCadastro">
+        <!-- Formulário de Cadastro -->
+        <main class="campo_cadastro" role="main">
+
+            <form class="formulario" id="formCadastro" aria-label="Formulário de cadastro">
+                <div class="titulo_principal">
+                    Crie sua conta
+                </div>
                 <div class="dados">
                     <label for="nome">Nome:</label>
-                    <input type="text" class="usuario" id="nome" required>
+                    <input type="text" class="usuario" id="nome" name="nome" required aria-required="true">
                 </div>
+
                 <div class="dados">
                     <label for="sobrenome">Sobrenome:</label>
-                    <input type="text" class="usuario" id="sobrenome" required>
+                    <input type="text" class="usuario" id="sobrenome" name="sobrenome" required aria-required="true">
                 </div>
+
                 <div class="dados">
                     <label for="dt_nascimento">Data de Nascimento:</label>
-                    <input type="date" class="usuario" id="dt_nascimento" required>
+                    <input type="date" class="usuario" id="dt_nascimento" name="dt_nascimento" required
+                        aria-required="true">
                 </div>
+
                 <div class="dados">
                     <label for="CPF_CNPJ">CPF / CNPJ:</label>
-                    <input type="text" class="usuario" id="CPF_CNPJ" minlength="11" maxlength="14" required>
+                    <input type="text" class="usuario" id="CPF_CNPJ" name="CPF_CNPJ" minlength="11" maxlength="18">
                 </div>
+
                 <div class="dados">
                     <label for="email">Email:</label>
-                    <input type="email" class="usuario" id="email" required>
+                    <input type="email" class="usuario" id="email" name="email" required aria-required="true"
+                        inputmode="email">
                 </div>
 
                 <div class="dados">
                     <label for="senha">Senha:</label>
-                    <input type="password" class="usuario" id="senha" minlength="6" required>
-                    <button type="button" onclick="mostrar_senha()" class="icon-button" aria-label="Mostrar senha">
-                        <img src="../../imgs/icones/show.png" alt="exibir" class="icon" id="icon-senha">
+                    <input type="password" class="usuario" id="senha" name="senha" minlength="6" required
+                        aria-required="true" aria-describedby="dica-senha">
+                    <button type="button" onclick="mostrar_senha()" class="icon-button" aria-label="Mostrar senha"
+                        aria-controls="senha">
+                        <img src="../../imgs/icones/show.png" alt="Ícone de visualização" class="icon" id="icon-senha">
                     </button>
+                    <small id="dica-senha">Mínimo 6 caracteres</small>
                 </div>
 
                 <div class="dados">
                     <label for="confirmacao">Confirme sua Senha:</label>
-                    <input type="password" class="usuario" id="confirmacao" minlength="6" required>
+                    <input type="password" class="usuario" id="confirmacao" name="confirmacao" minlength="6" required
+                        aria-required="true" aria-describedby="dica-confirmacao">
                     <button type="button" onclick="mostrar_confirmacao()" class="icon-button"
-                        aria-label="Mostrar confirmação de senha">
-                        <img src="../../imgs/icones/show.png" alt="exibir" class="icon" id="icon-confirmacao">
+                        aria-label="Mostrar confirmação de senha" aria-controls="confirmacao">
+                        <img src="../../imgs/icones/show.png" alt="Ícone de visualização" class="icon"
+                            id="icon-confirmacao">
                     </button>
                 </div>
 
-                <div class="checkbox">
-                    <input type="checkbox" id="termo" required>
-                    <label for="termo">Aceite todos os termos</label>
+                <div class="checkbox" role="group" aria-labelledby="termo-label">
+                    <input type="checkbox" id="termo" name="termo" required aria-required="true">
+                    <label for="termo" id="termo-label">Li e aceito os <a href="#" class="link">Termos de Serviço</a> e
+                        <a href="#" class="link">Política de Privacidade</a></label>
                 </div>
 
-                <div id="erro" role="alert"></div>
+                <div id="erro" role="alert" aria-live="assertive"></div>
 
-                <button type="button" onclick="cadastrar()" class="botao_principal">Cadastrar</button>
+                <button type="button" id="btnCadastrar" class="botao_principal" aria-label="Finalizar cadastro"
+                    onclick="cadastrar()">Cadastrar</button>
 
-                <div>
-                    Já tem cadastro?
-                    <a href="../entrar/index_entrar.html" class="link">Entrar</a>
-                </div>
+                <p class="texto-login">
+                    Já tem uma conta? <a href="../entrar/index_entrar.html" class="link">Faça login</a>
+                </p>
             </form>
         </main>
 
-        <!-- BARRA INFERIOR -->
-        <footer class="footer" aria-label="Rodapé">
+        <!-- Rodapé -->
+        <footer class="footer" role="contentinfo">
             <p>© CypherTech Solutions <span id="current-year"></span></p>
         </footer>
 
